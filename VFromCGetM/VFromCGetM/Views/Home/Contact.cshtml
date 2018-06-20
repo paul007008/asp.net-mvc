@@ -3,15 +3,28 @@
 }
 <h2>@ViewBag.Title.</h2>
 <h3>@ViewBag.Message</h3>
+@using VFromCGetM.ViewModels
+@model EmployeeListViewModel
 
-<address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
-</address>
-
-<address>
-    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-</address>
+     <hr />
+      <div>
+         <table>
+            
+            <tr>
+                
+                <th>Employee Name</th>
+                
+                <th>Salary</th>
+               
+            </tr>
+                        @foreach(EmployeeViewModel item in Model.Employees)
+                            {
+                 < tr >
+                  < td > @item.Salary </ td >
+                  < td style = "background-color:@item.SalaryColor"> </ td >
+                  </ tr >
+                            }
+            
+        </table>
+       
+    </div>

@@ -44,18 +44,41 @@ namespace VFromCGetM.Controllers
                         vmEmp.SalaryColor = "green";
                     }
             
-   vmEmp.UserName = "Admin";
+  // vmEmp.UserName = "Admin";
    
       return View("About", vmEmp);
 
-            return View();
+           
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            EmployeeListViewModel employeeListViewModel = new EmployeeListViewModel();
+            
+        EmployeeBusinessLayer empBal = new EmployeeBusinessLayer();
+               List<Employee> employees = empBal.GetEmployees();
+             
+        List<EmployeeViewModel> empViewModels = new List<EmployeeViewModel>();
+           
+      foreach (Employee emp in employees)
+                     {
+                         EmployeeViewModel empViewModel = new EmployeeViewModel();
+                          empViewModel.EmployeeName = emp.FirstName + " " + emp.LastName;
+                          empViewModel.Salary = emp.Salary.ToString("C");
+                          if (emp.Salary > 15000)
+                            {
+                                empViewModel.SalaryColor = "yellow";
+                            }
+                       else
+           {
+                                empViewModel.SalaryColor = "green";
+                            }
+                          empViewModels.Add(empViewModel);
+                      }
+                 employeeListViewModel.Employees = empViewModels;
+                employeeListViewModel.UserName = "Admin";
+                  return View("About", employeeListViewModel.ToList());
 
-            return View();
         }
        
     }

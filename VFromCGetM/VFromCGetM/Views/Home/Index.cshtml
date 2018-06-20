@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+<div>
+   @model VFromCGetM.Models.Employee
+  
+
+
+
+
+    @Model.FirstName @Model.LastName
+    @if (Model.Salary > 15000)
+    {
+        <span style = "background-color:yellow" >
+        Employee Salary: @Model.Salary.ToString("C")
+        </span >
+    }
+    else
+    {
+        <span style = "background-color:green" >
+
+        Employee Salary: @Model.Salary.ToString("C")
+        </span >
+    }
+
+</div>
+

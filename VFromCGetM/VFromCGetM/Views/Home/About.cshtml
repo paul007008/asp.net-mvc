@@ -3,5 +3,17 @@
 }
 <h2>@ViewBag.Title.</h2>
 <h3>@ViewBag.Message</h3>
-
+@using VFromCGetM.ViewModels
+@model EmployeeViewModel
 <p>Use this area to provide additional information.</p>
+ Hello @Model.UserName
+    <hr />
+     <div>
+      <b>Employee Details</b><br />
+        Employee Name : @Model.EmployeeName <br />
+     <span style="background-color:@Model.SalaryColor">
+                 Employee Salary: @Model.Salary
+       
+    </span>
+    
+</div>
